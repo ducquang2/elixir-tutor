@@ -62,7 +62,6 @@ defmodule Example.Orders do
     order
     |> Repo.preload(:products)
     |> Ecto.Changeset.change()
-    |> IO.inspect()
     |> Ecto.Changeset.put_assoc(:products, data)
     |> Repo.update()
   end

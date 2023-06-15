@@ -37,6 +37,14 @@ defmodule Example.Products do
     |> Repo.all()
   end
 
+  def list_products_by_name(name, per_page, page) do
+    Product
+    |> where([p], ilike(p.name, ^"%#{name}%"))
+    |> limit(^per_page)
+    |> offset((^page - 1) * ^per_page)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single product.
 
